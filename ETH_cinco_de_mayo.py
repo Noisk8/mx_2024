@@ -52,3 +52,23 @@ d3 >> play('*', dur=var([4], [16]), amp=.2).every(6,'stutter',4,dur=Cycle([3/4,2
 c2 >> play('a', rate=.25).spread()
 bh >> play('---[--]', chop=0., amp=.3).spread()
 jk >> play('[--]', rate=-.25).spread()
+
+
+sk8= [0,01,1,0,0,0]
+
+
+cd >> pasha(sk8, dur=PDur(2,8), oct=4, amp=1)
+
+
+dr >> sawbass (dur=1 , amp=1.2, root=[0], slide=var([0,0]))
+
+rt >> play (" |V0 |")
+
+hy >> play (" |n2|", dur=1/2, amp=1.5)
+
+cf >> play (" [--]", amp=3)
+
+hd >> play (" ~", amp=2)
+
+
+gt >> sitar (sk8, dur=.5, oct=4, amp=.8, delay= 1)
