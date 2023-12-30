@@ -1,5 +1,37 @@
 Clock.bpm = 130
 
+
+# PARTE 1
+gy >> ripple (oct=3, amp=1, dur=16)
+gt >> play('|x3|', amp=1)
+
+Clock.bpm=128
+
+# dur=pDur(8,8)×1
+hy >> star(P[5,7,8.5,4.8].reverse(), dur=pDur(1,8)*1,vib=0., pan=(1,-1), oct=5 ,amp=.1)+ 0
+
+bx >> dbass(dur=pDur(5 ,8).reverse(),pan=(-1,.0), amp=.5 , oct=5 , formant =0)
+
+hq >> play(' |g9| ' ,dur =2/2 ,pan=( - 1,- 1), amp =0)
+hl >> play(' |g9| ' . dur =8/2 , delay=.5,. mix =3,. room =3,. amp=-)
+nr >> play(' |n2| ' .amp=-0,dur =2/2 )
+ty >> play(' |-3|' .amp=-0,dur =2/2 )
+hl >> play ('|E2|' . chop=.0,. amp=-. 2,. dur=- 2/ 2 )
+
+
+play "[i*3]" amp=2
+sople ->var([0,0],1)
+b) >> dirt(sople.dur,P[1/4,1/4,1/2].reverse(), oct=5, formant=5 amp=1.3)
+>> glass (dur=8 ,amod=7)
+cd >> play ("[04]", amp=.5 ,dur=2/2 ,mix=.room=.5)
+C-2 >> play ("[i*]", dur=PwDur(7), mix=.8 room=.5 ,delay?)
+>> play ("[i*]", dur=PwDur(7), sample=P+Randi().stop()
+hr >> play ("[:|:|:|:|]" amp=-2
+bass (dur=8,)
+print(SynthDef)
+
+
+
 print(SynthDefs)
 
 
