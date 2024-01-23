@@ -28,3 +28,11 @@ bm >> play ("[--]", amp=2, sample=2, )
 jk >> play (" |o2|", amp=2, dur=2/2, room=.4, mix=.7)
 
 u3 >> play(' |~0|', amp=6, chop=0)
+
+#NNW
+
+p1 >> dirt([[0,-2], [3,0], [7, 2], [9, 5]], dur = 1/2).every(PRand([6,4]), "mirror")
+b1 >> pasha( dur=PDur(4,8), amp=2, oct=4)
+d1 >> play("<(|x0|m)-o(- )><--([---]*m)->", sample=0, dur=1/2, amp=1).every(6, "stutter", 2)
+hu >> dirt(amp=1.3, dur=PDur(4,8), root=var([0,1]))
+

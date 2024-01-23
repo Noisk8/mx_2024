@@ -1,6 +1,47 @@
 Clock.bpm = 130
 
 
+
+
+Scale.default = Scale.major
+Clock.bpm = 150
+a=[3,5,3,5]
+prog = [4,5,7,6]
+d1 >> play("<----><v   o  vv v o  v>", dur=1/2, amp=1, hpf=200, lpf=5500, room=0.6)
+b1 >> bass(var(prog, a), dur=a, amp=0.5, oct=5, delay=0, room=0.2, decay=3)
+p2 >> keys(var(prog, a), dur=a, delay=0.03, oct=4, amp=0.6, echo=1)
+p1 >> keys(var(prog, a) + (0,2),delay=0.03, oct=5, bend=0.045, room=0.5, amp=2)
+
+
+
+
+
+#nice one 
+
+p1 >> sinepad((0, 3, 5, 7, 9) + var([2, 0, -5, 0]), dur=[1.5, 1.5, 1], amp=0.5).every(6, "mirror")
+p2 >> keys([2, 0, -5, 0], dur=4, oct=5, amp=2, sus=4).every(6, "offadd", 2)
+
+p3 >> blip(var([PBern(8), P10(16)], 4), lpf=2000, dist=1, dur=1/4) + var([0, 2, -3, 2], 4)
+p4 >> space(PZ12([0, 1], [1, 0.5]))
+
+d1 >> play("<----><(v ) * ><([b *t]  by)   >", sample=2, lpf=3000, hpf=400).every(6, "stutter", 4)
+d2 >> play("<---(-*)>", dur=var([1/2, 1/4],[4, 12]), rate=PSine(16),  amp=linvar([0, 2], 8), pan=PRand(-1, 1), crush=0.5).every(4, "mirror")
+
+d3 >> play("<vt*t><  v >", amp=var([1, 0], [28, 4]), sample=2, crush=1)
+d4 >> play("<v v >", amp=var([1, 0], [28, 4]), sample=2, crush=1)
+b1 >> jbass(var([-2, 5, -2, 7], 2), tremolo=2, amp = 1, dur=1/2, sus=1.5)
+
+p5 >> pluck([P**(9, 8, 7, 5), P**(0, 5, -3, 2)], drive=0.05, bend=0.02, lpf=linvar([1000,5000], 4), formant=var([0, 1], [56, 8])).every(6, "stutter", 2)
+
+main_b = Group(d1, d2, p1, p2, b1)
+main_b.amp = var([1, 0], [56, 8])
+
+d3.amp = var([0, 1], 32)
+d4.amp = var([1, 0], 32)
+
+
+
+
 # Gordo ventilador 
 
 je >> play ('|x4| ')
@@ -120,3 +161,26 @@ p5 >> play("[--]", amp=3)
 p6 >> play("[ee]|e1||C2|[ee]-e", amp=3)
 
 print(SynthDefs)
+
+
+
+from math import floor
+Clock.bpm = 150
+Scale.default = Scale.minorPentatonic
+
+d1 >> play("x x o (   o) ", sample=3).every(4, "stutter", 4, dur=Cycle([3,2]))
+d2 >> play("--(-[---])-", sample=4)
+d3 >> play("v vv vv vv vv v ", rate=var([1,1.5], 4), coarse=1, chop=0.5, drive=0.04)
+
+d4 >> play("{gb}", dur=var([1/2, PRand([1/4, 1/2])], 16), amp=0.40, rate=linvar([0,PRand(4)], PRand(8)))
+
+
+for i in range(1, 5):
+    p1 >> pasha(sinvar([-i,i],8), amp=0.25, dur=var([Cycle([1/2,1])/2, 1], PRand([4,6,8])), fmod=4, formant=1, drive=linvar([0.05, 0.5], 4), shape=0.5)
+
+
+p2 >> keys(var([([5,4,3,2]),([3,2,1,3])], 2), drive=0.4, chop=0.5, coarse=2)
+
+
+p1.amp = var([0,0.25], [8,24])
+p2.amp = var([1,0], [24,8])
